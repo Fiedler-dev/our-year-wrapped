@@ -1,0 +1,413 @@
+
+@font-face {
+    font-family: 'MyFont';
+    src: url('assets/fonts/Hazztype-Gremlin-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y proximity;
+}
+
+body {
+    margin: 0;
+    font-family: 'MyFont', sans-serif;
+    color: white;
+}
+
+/* Full-screen sections */
+
+.slide {
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 50px 25px;
+    text-align: center;
+
+    scroll-snap-align: start;
+    overflow: hidden;
+}
+
+.content {
+    width: 100%;
+    max-width: 750px;
+}
+
+/* Typography */
+
+.eyebrow {
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-size: clamp(3.5rem, 11vw, 7rem);
+    line-height: 1;
+    margin: 20px 0;
+    letter-spacing: -3px;
+}
+
+h2 {
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    margin: 10px 0;
+}
+
+.content > p:not(.eyebrow) {
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    line-height: 1.5;
+}
+
+/* Section backgrounds */
+
+.intro {
+    background: linear-gradient(135deg, #033608, #76af87);
+}
+
+.days {
+    background: linear-gradient(135deg, #194f96, #7f5cbe);
+}
+
+.shibus {
+    background: linear-gradient(135deg, #d6b856, #f7ad59);
+}
+
+.person {
+    background: linear-gradient(135deg, #2155ff, #a42aff);
+}
+
+.memories {
+    background: linear-gradient(135deg, #814FB0 , #814FB0);
+}
+
+.finale {
+    background: linear-gradient(135deg, #6d27ff, #f548a5);
+}
+
+/* Fade-in animations */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(65px) scale(0.95);
+
+    transition:
+        opacity 0.9s ease,
+        transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Scroll indicator */
+
+.scrollHint {
+    display: block;
+    margin-top: 60px;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(12px);
+    }
+}
+
+/* Mobile adjustments */
+
+@media (max-width: 600px) {
+    h1 {
+        letter-spacing: -2px;
+    }
+
+    .slide {
+        padding: 40px 20px;
+    }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .scrollHint {
+        animation: none;
+    }
+}
+
+/* FOOD RANKINGS */
+
+.food {
+    background: linear-gradient(150deg, #3e1775, #6b20a5);
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.foodContent {
+    max-width: 650px;
+}
+
+.food h1 {
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+}
+
+.highlight {
+    color: #ffcf36;
+}
+
+.restaurantList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 35px;
+}
+
+.restaurantRow {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 16px;
+    border-radius: 14px;
+
+    background: rgba(255, 255, 255, 0.12);
+    text-align: left;
+
+    opacity: 0;
+    transform: translateY(35px);
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+}
+
+.restaurantRow.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.restaurantRank {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #ffcf36;
+    min-width: 35px;
+}
+
+.restaurantInfo {
+    flex: 1;
+    min-width: 0;
+}
+
+.restaurantName {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.restaurantBar {
+    height: 6px;
+    margin-top: 9px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+}
+
+.restaurantBarFill {
+    height: 100%;
+    width: 0;
+    background: #ffcf36;
+    border-radius: 10px;
+    transition: width 1s ease;
+}
+
+.restaurantCount {
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-align: right;
+}
+
+.restaurantCount small {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: normal;
+    opacity: 0.8;
+}
+
+@media (max-width: 600px) {
+    .restaurantRow {
+        padding: 12px;
+        gap: 10px;
+    }
+
+    .restaurantName {
+        font-size: 0.95rem;
+    }
+
+    .restaurantRank {
+        font-size: 1.5rem;
+        min-width: 25px;
+    }
+
+    .restaurantCount {
+        font-size: 1.3rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .restaurantRow {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .restaurantBarFill {
+        transition: none;
+    }
+}
+
+/* ==================================
+   MEMORY SLIDES
+================================== */
+
+.memoryLeft,
+.memoryRight {
+    background: linear-gradient(
+        135deg,
+        #301c4d,
+        #6e3b76
+    );
+}
+
+/* Two-column layout */
+.memoryLayout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 6vw;
+
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Text */
+.memoryText {
+    text-align: left;
+}
+
+.memoryDate {
+    font-size: clamp(2.8rem, 5vw, 5.5rem);
+    line-height: 1.05;
+    margin: 0 0 25px;
+}
+
+.memoryDescription {
+    font-size: clamp(1rem, 1.6vw, 1.4rem);
+    line-height: 1.7;
+    max-width: 500px;
+    opacity: 0.9;
+}
+
+/* Image container */
+.memoryImage {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.memoryImage img {
+    display: block;
+    width: 100%;
+    max-height: 70vh;
+    object-fit: cover;
+
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* ==================================
+   MOBILE LAYOUT
+================================== */
+
+@media (max-width: 700px) {
+
+    .memoryLayout {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .memoryText {
+        text-align: center;
+    }
+
+    .memoryDate {
+        font-size: clamp(2.4rem, 9vw, 3.5rem);
+        margin-bottom: 15px;
+    }
+
+    .memoryDescription {
+        font-size: 1rem;
+        margin: 0 auto;
+    }
+
+    .memoryImage img {
+        max-height: 45vh;
+        width: 100%;
+        object-fit: contain;
+    }
+
+    /* Keep text above image on mobile */
+    .memoryRight .memoryText {
+        order: -1;
+    }
+}
+/* Memory Left animations */
+.memoryLeft .memoryText.reveal {
+    transform: translateX(-50px);
+}
+
+.memoryLeft .memoryImage.reveal {
+    transform: translateX(50px);
+}
+
+/* Memory Right animations */
+.memoryRight .memoryImage.reveal {
+    transform: translateX(-50px);
+}
+
+.memoryRight .memoryText.reveal {
+    transform: translateX(50px);
+}
+
+/* Final visible position */
+.memoryLeft .reveal.visible,
+.memoryRight .reveal.visible {
+    transform: translateX(0);
+}
