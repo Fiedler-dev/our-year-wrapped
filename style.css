@@ -411,3 +411,36 @@ h2 {
 .memoryRight .reveal.visible {
     transform: translateX(0);
 }
+.slide.finalMessage {
+    box-sizing: border-box;
+    height: auto;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 35px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.finalMessageContent {
+    width: 100%;
+    max-width: 650px;
+    text-align: center;
+}
+
+.finalMessage h1 {
+    font-size: clamp(1.8rem, 7vw, 3.5rem);
+    line-height: 1.15;
+    margin: 0 0 24px;
+}
+
+.finalMessage p {
+    font-size: clamp(0.95rem, 4vw, 1.2rem);
+    line-height: 1.55;
+    margin: 0 0 18px;
+}
+
+.finalMessage h2 {
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+    margin: 24px 0 0;
+}
