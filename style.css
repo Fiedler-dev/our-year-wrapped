@@ -420,6 +420,8 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: center;
+    background: #211921;
+    color: white;
 }
 
 .finalMessageContent {
@@ -432,15 +434,18 @@ h2 {
     font-size: clamp(1.8rem, 7vw, 3.5rem);
     line-height: 1.15;
     margin: 0 0 24px;
+    color: white;
 }
 
 .finalMessage p {
     font-size: clamp(0.95rem, 4vw, 1.2rem);
     line-height: 1.55;
     margin: 0 0 18px;
+    color: white;
 }
 
 .finalMessage h2 {
     font-size: clamp(1.5rem, 6vw, 2.5rem);
     margin: 24px 0 0;
+    color: white;
 }
